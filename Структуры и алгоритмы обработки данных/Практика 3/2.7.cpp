@@ -31,4 +31,5 @@ int main() {
     cout << "результат: " << res;
     end = clock();
     printf("\nЗатрачено времени %.4f секунд\n", ((double)end - start) / ((double)CLOCKS_PER_SEC));
+    cin>>x;
 }
