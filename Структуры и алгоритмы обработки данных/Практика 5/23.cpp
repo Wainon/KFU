@@ -23,33 +23,33 @@ void tree(vector<int>& x, int n, int k) {
 
     int begin, left, rght;
 
-    left = 2 * k;
-    rght = 2 * k + 1;
-    begin = k;
+    left = 2 * k;//левое отвлетвение 
+    rght = 2 * k + 1;//правое отвлетвение 
+    begin = k;//отпровная точка
 
-    if (left < n && x[left] > x[begin]) {
+    if (left < n && x[left] > x[begin]) {//проверка на больше отпровное число или левая ветвь
         begin = left;
     }
-    if (rght < n && x[rght] > x[begin]) {
+    if (rght < n && x[rght] > x[begin]) {//проверка на больше отпровное число или правая ветвь или левая
         begin = rght;
     }
-    if (begin != k) {
+    if (begin != k) {//если отпровное значение поменнялось то меняем их местами в списке 
         swap(x[k], x[begin]);
         tree(x, n, begin);
     }
 }
 void sorte(vector<int>& x,bool revers=false) {
     size_t t = x.size();
-    if (revers) {
+    if (revers) {// сортерует по убыванию
         sorte(x);
         reverse(x.begin(), x.end());
     }
-    else {
-        for (int i = t / 2 - 1; i >= 0; i--) {
+    else {//сортерует по возврастанию
+        for (int i = t / 2 - 1; i >= 0; i--) {//построение дерева удволитвореючее тому что все ответления менше отпраного 
             tree(x, t, i);
         }
 
-        for (int i = t - 1; i > 0; i--) {
+        for (int i = t - 1; i > 0; i--) {//перемещает максимальный в конец
 
             swap(x[0], x[i]);
             tree(x, i, 0);
